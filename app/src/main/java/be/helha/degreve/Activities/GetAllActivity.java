@@ -1,5 +1,6 @@
 package be.helha.degreve.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,6 @@ import be.helha.degreve.Entities.Livre;
 import be.helha.degreve.R;
 import be.helha.degreve.UI.LivreUiAdapter;
 import be.helha.degreve.async.GetAllLivres;
-import be.helha.degreve.async.GetAllLivresAT;
 
 public class GetAllActivity extends AppCompatActivity {
 
@@ -35,12 +35,13 @@ public class GetAllActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
+                setResult(Activity.RESULT_CANCELED, intent);
+                finish();
             }
         });
 
         if(classe.equals("Livre")){
-            GetAllLivresAT async = new GetAllLivresAT(btnReturn_GetAll, lvGetAll, getApplicationContext());
+            GetAllLivres async = new GetAllLivres(btnReturn_GetAll, lvGetAll, getApplicationContext());
             async.execute();
         }
 

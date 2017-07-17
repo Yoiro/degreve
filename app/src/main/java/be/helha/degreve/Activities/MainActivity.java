@@ -19,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
     private Object selectedItem;
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -40,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 Magazine m = new Magazine();
                 Intent intent = new Intent(getApplicationContext(), GetAllActivity.class);
                 intent.putExtra("Class", m);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
