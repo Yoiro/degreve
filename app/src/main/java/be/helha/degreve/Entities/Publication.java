@@ -7,27 +7,18 @@ import java.util.List;
  * Created by Alastard on 17/07/2017.
  */
 
-public class MotherBook implements Serializable {
-    private String type;
+public class Publication implements Serializable {
     private List<Editeur> editeurs;
     private int id;
     private String titre;
 
-    public MotherBook(){}
+    public Publication(){}
 
-    public MotherBook(String type, List<Editeur> editeurs, int id, String titre) {
-        this.type = type;
+    public Publication(String type, List<Editeur> editeurs, int id, String titre) {
+
         this.editeurs = editeurs;
         this.id = id;
         this.titre = titre;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public List<Editeur> getEditeurs() {
