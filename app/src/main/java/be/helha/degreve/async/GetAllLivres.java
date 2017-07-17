@@ -14,8 +14,11 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import be.helha.degreve.Activities.MainActivity;
+import be.helha.degreve.Entities.Livre;
 
 /**
  * Created by Alastard on 17/07/2017.
@@ -44,7 +47,14 @@ public class GetAllLivres {
                 new Response.Listener<JSONArray>(){
                     @Override
                     public void onResponse(JSONArray response) {
-                        System.out.println(response);
+                        for(int i = 0; i < response.length(); i++){
+                            try {
+                                Livre listItem = (Livre)response.get(i);
+                                System.out.println(listItem);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 },
                 new Response.ErrorListener(){
