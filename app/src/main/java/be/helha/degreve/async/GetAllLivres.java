@@ -47,14 +47,8 @@ public class GetAllLivres {
                 new Response.Listener<JSONArray>(){
                     @Override
                     public void onResponse(JSONArray response) {
-                        for(int i = 0; i < response.length(); i++){
-                            try {
-                                Livre listItem = (Livre)response.get(i);
-                                System.out.println(listItem);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
+                        System.out.println(response);
+                        System.out.println(response.toString());
                     }
                 },
                 new Response.ErrorListener(){
