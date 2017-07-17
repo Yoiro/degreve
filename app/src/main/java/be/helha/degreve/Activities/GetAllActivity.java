@@ -8,14 +8,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import be.helha.degreve.Entities.Auteur;
-import be.helha.degreve.Entities.Editeur;
 import be.helha.degreve.Entities.Livre;
-import be.helha.degreve.Entities.Magazine;
-import be.helha.degreve.Entities.Publication;
 import be.helha.degreve.R;
 import be.helha.degreve.UI.LivreUiAdapter;
 import be.helha.degreve.async.GetAllLivres;
+import be.helha.degreve.async.GetAllLivresAT;
 
 public class GetAllActivity extends AppCompatActivity {
 
@@ -33,10 +30,17 @@ public class GetAllActivity extends AppCompatActivity {
         String classe=o.getClass().getSimpleName();
 
         lvGetAll=(ListView) findViewById(R.id.lvGetAll);
-
+        btnReturn_GetAll=(Button) findViewById(R.id.btnReturn_GetAll);
+        btnReturn_GetAll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         if(classe.equals("Livre")){
-            GetAllLivres async = new GetAllLivres(btnReturn_GetAll, lvGetAll, getApplicationContext());
+            GetAllLivresAT async = new GetAllLivresAT(btnReturn_GetAll, lvGetAll, getApplicationContext());
             async.execute();
         }
 
@@ -52,16 +56,5 @@ public class GetAllActivity extends AppCompatActivity {
                 }
             }
         });
-
-        btnReturn_GetAll=(Button) findViewById(R.id.btnReturn_GetAll);
-        btnReturn_GetAll.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 }

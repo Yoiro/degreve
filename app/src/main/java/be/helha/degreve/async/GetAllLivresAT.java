@@ -28,7 +28,7 @@ import be.helha.degreve.UI.LivreUiAdapter;
 /**
  * Created by Alastard on 17/07/2017.
  */
-public class GetAllLivres extends AsyncTask<String, Void, List<Livre>> {
+public class GetAllLivresAT extends AsyncTask<String, Void, List<Livre>> {
     private String TAG = "Simon";
     private Button btnReturn;
     private ListView lvT;
@@ -36,7 +36,7 @@ public class GetAllLivres extends AsyncTask<String, Void, List<Livre>> {
     private List<Livre> livres=new ArrayList<>();
     //private OnTaskCompleted delegate;
 
-    public GetAllLivres(Button btn,ListView lv, Context cont) {
+    public GetAllLivresAT(Button btn,ListView lv, Context cont) {
         btnReturn = btn;
         lvT=lv;
         context = cont;
@@ -61,7 +61,7 @@ public class GetAllLivres extends AsyncTask<String, Void, List<Livre>> {
 
     @Override
     protected List<Livre> doInBackground(String... params) {
-        String urlGetAll = "http://52.31.3.254:11080/api-livres/services/api/livres";
+        String urlGetAll = "http://54.76.209.52:8080/api-livres/services/api/livres";
         Log.i(TAG, "doInBackground: " + urlGetAll);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, urlGetAll, null,
                 new Response.Listener<JSONArray>() {
