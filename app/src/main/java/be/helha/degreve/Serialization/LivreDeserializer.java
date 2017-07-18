@@ -16,4 +16,8 @@ public class LivreDeserializer implements Serializable {
         return new Gson().fromJson(jsonString, Livre.class);
     }
 
+    public static String write(Livre livre){
+        return new Gson().toJson(livre);
+    }
+
 }

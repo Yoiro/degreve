@@ -1,5 +1,7 @@
 package be.helha.degreve.Entities;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -31,4 +33,5 @@ public class Livre extends MotherBook implements Serializable{
     public void setAuteurs(List<Auteur> auteurs) {
         this.auteurs = auteurs;
     }
+
 }
