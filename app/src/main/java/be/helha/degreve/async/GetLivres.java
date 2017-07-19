@@ -30,14 +30,14 @@ import be.helha.degreve.UI.LivreUiAdapter;
 /**
  * Created by Alastard on 17/07/2017.
  */
-public class GetAllLivres {
+public class GetLivres {
     private final String url = "http://54.76.209.52:8080/api-livres/services/api/livres";
     private Button btnReturn;
     private ListView lvT;
     private Context context;
     private List<Livre> livres=new ArrayList<>();
 
-    public GetAllLivres(Button btn, ListView lv, Context cont) {
+    public GetLivres(Button btn, ListView lv, Context cont) {
         btnReturn = btn;
         lvT=lv;
         context = cont;
