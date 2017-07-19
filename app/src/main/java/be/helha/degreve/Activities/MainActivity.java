@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Magazine m = new Magazine();
-                Intent intent = new Intent(getApplicationContext(), GetAllActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GetMagsActivity.class);
                 intent.putExtra("Class", m);
                 startActivityForResult(intent, 1);
             }
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Livre l = new Livre();
-                Intent intent = new Intent(getApplicationContext(), GetAllActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GetLivresActivity.class);
                 intent.putExtra("Class", l);
                 startActivity(intent);
             }
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Auteur a = new Auteur();
-                Intent intent = new Intent(getApplicationContext(), GetAllActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GetLivresActivity.class);
                 intent.putExtra("Class", a);
                 startActivity(intent);
             }
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Publication p = new Publication();
-                Intent intent = new Intent(getApplicationContext(), GetAllActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GetLivresActivity.class);
                 intent.putExtra("Class", p);
                 startActivity(intent);
             }
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Editeur e = new Editeur();
-                Intent intent = new Intent(getApplicationContext(), GetAllActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GetLivresActivity.class);
                 intent.putExtra("Class", e);
                 startActivity(intent);
             }

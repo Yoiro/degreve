@@ -15,20 +15,20 @@ import android.widget.ListView;
 import be.helha.degreve.Entities.Livre;
 import be.helha.degreve.R;
 import be.helha.degreve.UI.LivreUiAdapter;
-import be.helha.degreve.async.GetAllLivres;
+import be.helha.degreve.async.GetLivres;
 
-public class GetAllActivity extends AppCompatActivity {
+public class GetLivresActivity extends AppCompatActivity {
 
     private static final String TAG = "Simon";
     private Button btnReturn_GetAll;
     private ListView lvGetAll;
     private EditText etGetAll;
-    private GetAllLivres async;
+    private GetLivres async;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_all);
+        setContentView(R.layout.activity_get_livres);
         Intent i=getIntent();
 
         btnReturn_GetAll=(Button) findViewById(R.id.btnReturn_GetAll);
@@ -71,7 +71,7 @@ public class GetAllActivity extends AppCompatActivity {
             }
         });
 
-        async = new GetAllLivres(btnReturn_GetAll, lvGetAll, getApplicationContext());
+        async = new GetLivres(btnReturn_GetAll, lvGetAll, getApplicationContext());
         async.execute();
     }
 }

@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <com.android.volley.toolbox.NetworkImageView
-        android:id="@+id/lvGetAll_imgThumbLivre"
+        android:id="@+id/magitemIMG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/lvGetAll_nameLivre"
+            android:id="@+id/magitemTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="[NAME]"

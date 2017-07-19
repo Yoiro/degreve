@@ -34,7 +34,7 @@ public class DetailsActivity extends AppCompatActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),GetAllActivity.class);
+                Intent intent=new Intent(getApplicationContext(),GetLivresActivity.class);
                 setResult(Activity.RESULT_CANCELED, intent);
                 finish();
             }

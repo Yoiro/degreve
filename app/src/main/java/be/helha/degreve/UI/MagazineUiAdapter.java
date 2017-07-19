@@ -12,22 +12,21 @@ import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.List;
 
-import be.helha.degreve.Entities.Livre;
+import be.helha.degreve.Entities.Magazine;
 import be.helha.degreve.R;
 import be.helha.degreve.async.Singleton;
 
 /**
- * Created by Alastard on 17/07/2017.
+ * Created by Alastard on 19/07/2017.
  */
 
-public class LivreUiAdapter extends ArrayAdapter<Livre> {
-
+public class MagazineUiAdapter extends ArrayAdapter<Magazine>{
     private Context context;
     private int tuile_layout;
-    private List<Livre> list;
+    private List<Magazine> list;
     private final String imageUrl = "http://54.76.209.52:8080/api-livres/services/files/download/";
 
-    public LivreUiAdapter(Context context, int resource, List<Livre> list){
+    public MagazineUiAdapter(Context context, int resource, List<Magazine> list){
         super(context,resource,list);
         this.context=context;
         tuile_layout=resource;
@@ -37,12 +36,12 @@ public class LivreUiAdapter extends ArrayAdapter<Livre> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        Livre current=list.get(position);
+        Magazine current=list.get(position);
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View tuile=inflater.inflate(this.tuile_layout,parent, false);
-        NetworkImageView networkImageView = (NetworkImageView) tuile.findViewById(R.id.lvGetAll_imgThumbLivre);
+        NetworkImageView networkImageView = (NetworkImageView) tuile.findViewById(R.id.magitemIMG);
         networkImageView.setImageUrl(imageUrl+current.getId(), Singleton.getInstance(context).getImageLoader());
-        TextView tvName=(TextView) tuile.findViewById(R.id.lvGetAll_nameLivre);
+        TextView tvName=(TextView) tuile.findViewById(R.id.magitemTV);
         tvName.setText(current.getTitre());
         return tuile;
     }
