@@ -12,26 +12,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import be.helha.degreve.Entities.Livre;
+import be.helha.degreve.Entities.Magazine;
 import be.helha.degreve.R;
-import be.helha.degreve.UI.LivreUiAdapter;
-import be.helha.degreve.async.GetLivres;
+import be.helha.degreve.UI.MagazineUiAdapter;
+import be.helha.degreve.async.GetMagazines;
 
-public class GetLivresActivity extends AppCompatActivity {
+public class GetMagazinesActivity extends AppCompatActivity {
 
     private static final String TAG = "Simon";
     private Button btnReturn_GetAll;
     private ListView lvGetAll;
     private EditText etGetAll;
-    private GetLivres async;
+    private GetMagazines async;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_livres);
+        setContentView(R.layout.activity_get_magazines);
         Intent i=getIntent();
 
-        btnReturn_GetAll=(Button) findViewById(R.id.btnReturn_GetAll);
+        btnReturn_GetAll=(Button) findViewById(R.id.magsReturn);
         btnReturn_GetAll.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -41,18 +41,18 @@ public class GetLivresActivity extends AppCompatActivity {
             }
         });
 
-        lvGetAll=(ListView) findViewById(R.id.lvGetAll);
+        lvGetAll=(ListView) findViewById(R.id.magsLV);
         lvGetAll.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LivreUiAdapter uiAdapter = (LivreUiAdapter) lvGetAll.getAdapter();
-                Livre selectedBook = uiAdapter.getItem(position);
-                Intent intentToDetails = new Intent(getApplicationContext(), GetLivreActivity.class);
+                MagazineUiAdapter uiAdapter = (MagazineUiAdapter) lvGetAll.getAdapter();
+                Magazine selectedBook = uiAdapter.getItem(position);
+                Intent intentToDetails = new Intent(getApplicationContext(), GetMagazineActivity.class);
                 intentToDetails.putExtra("id", selectedBook.getId());
                 startActivity(intentToDetails);
             }
         });
-        etGetAll= (EditText) findViewById(R.id.etGetAll);
+        etGetAll= (EditText) findViewById(R.id.magsET);
         etGetAll.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -71,7 +71,7 @@ public class GetLivresActivity extends AppCompatActivity {
             }
         });
 
-        async = new GetLivres(btnReturn_GetAll, lvGetAll, getApplicationContext());
+        async = new GetMagazines(btnReturn_GetAll, lvGetAll, getApplicationContext());
         async.execute();
     }
 }

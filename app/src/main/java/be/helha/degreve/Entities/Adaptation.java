@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Alastard on 17/07/2017.
  */
 
-class Adaptation implements Serializable{
+public class Adaptation implements Serializable{
     private int annee;
     private int id;
     private String titre;

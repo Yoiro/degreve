@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,67 +7,64 @@
     android:layout_height="match_parent"
     tools:context="be.helha.degreve.Activities.MainActivity">
 
-<RelativeLayout
-    android:layout_width="368dp"
-    android:layout_height="495dp"
-    tools:layout_editor_absoluteY="8dp"
-    tools:layout_editor_absoluteX="8dp">
-
-    <TextView
-        android:id="@+id/maintitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mainmenu"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/booksbtn"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/maintitle"
-        android:text="@string/booksbtn"/>
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
 
-    <Button
-        android:id="@+id/publicationsbtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/booksbtn"
-        android:text="@string/publicationsbtn"/>
+        <TextView
+            android:id="@+id/maintitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mainmenu"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_centerHorizontal="true"/>
 
-    <Button
-        android:id="@+id/magsbtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/publicationsbtn"
-        android:text="@string/magsbtn"/>
+        <Button
+            android:id="@+id/booksbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/maintitle"
+            android:text="@string/booksbtn"/>
 
-    <Button
-        android:id="@+id/adaptationsbtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/magsbtn"
-        android:text="@string/adaptationsbtn"/>
+        <Button
+            android:id="@+id/publicationsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/booksbtn"
+            android:text="@string/publicationsbtn"/>
 
-    <Button
-        android:id="@+id/autorsbtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/adaptationsbtn"
-        android:text="@string/autorsbtn"/>
+        <Button
+            android:id="@+id/magsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/publicationsbtn"
+            android:text="@string/magsbtn"/>
 
-    <Button
-        android:id="@+id/editorsbtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/autorsbtn"
-        android:text="@string/editorsbtn"/>
+        <Button
+            android:id="@+id/adaptationsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/magsbtn"
+            android:text="@string/adaptationsbtn"/>
+
+        <Button
+            android:id="@+id/autorsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/adaptationsbtn"
+            android:text="@string/autorsbtn"/>
+
+        <Button
+            android:id="@+id/editorsbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/autorsbtn"
+            android:text="@string/editorsbtn"/>
+    </RelativeLayout>
 
 </RelativeLayout>
-
-
-</android.support.constraint.ConstraintLayout>

@@ -24,14 +24,14 @@ import be.helha.degreve.UI.MagazineUiAdapter;
  * Created by Alastard on 19/07/2017.
  */
 
-public class GetMags {
-    private final String url = "http://54.76.209.52:8080/api-mags/services/api/mags";
+public class GetMagazines {
+    private final String url = "http://54.76.209.52:8080/api-livres/services/api/magazines";
     private Button btnReturn;
     private ListView lvT;
     private Context context;
     private List<Magazine> mags =new ArrayList<>();
 
-    public GetMags(Button btn, ListView lv, Context cont) {
+    public GetMagazines(Button btn, ListView lv, Context cont) {
         btnReturn = btn;
         lvT=lv;
         context = cont;

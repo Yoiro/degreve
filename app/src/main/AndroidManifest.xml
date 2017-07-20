@@ -19,8 +19,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.GetLivresActivity" />
-        <activity android:name=".Activities.DetailsActivity" />
-        <activity android:name=".Activities.GetMagsActivity"></activity>
+        <activity android:name=".Activities.GetLivreActivity" />
+        <activity android:name=".Activities.GetMagazinesActivity" />
+        <activity android:name=".Activities.GetPublicationsActivity" />
+        <activity android:name=".Activities.GetMagazineActivity" />
+        <activity android:name=".Activities.GetPublicationActivity" />
+        <activity android:name=".Activities.GetAdaptationsActivity" />
+        <activity android:name=".Activities.GetAdaptationActivity" />
+        <activity android:name=".Activities.GetAuteursActivity" />
+        <activity android:name=".Activities.GetEditeursActivity" />
+        <activity android:name=".Activities.GetEditeurActivity"></activity>
     </application>
 
 </manifest>

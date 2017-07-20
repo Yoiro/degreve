@@ -12,26 +12,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import be.helha.degreve.Entities.Livre;
+import be.helha.degreve.Entities.Editeur;
 import be.helha.degreve.R;
-import be.helha.degreve.UI.LivreUiAdapter;
-import be.helha.degreve.async.GetLivres;
+import be.helha.degreve.UI.EditeurUiAdapter;
+import be.helha.degreve.async.GetEditeurs;
 
-public class GetLivresActivity extends AppCompatActivity {
-
+public class GetEditeursActivity extends AppCompatActivity {
     private static final String TAG = "Simon";
     private Button btnReturn_GetAll;
     private ListView lvGetAll;
     private EditText etGetAll;
-    private GetLivres async;
+    private GetEditeurs async;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_livres);
+        setContentView(R.layout.activity_get_editeurs);
         Intent i=getIntent();
 
-        btnReturn_GetAll=(Button) findViewById(R.id.btnReturn_GetAll);
+        btnReturn_GetAll=(Button) findViewById(R.id.editeursReturn);
+        lvGetAll=(ListView) findViewById(R.id.editeursLV);
+        etGetAll= (EditText) findViewById(R.id.etGetAll);
+
         btnReturn_GetAll.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -41,18 +43,17 @@ public class GetLivresActivity extends AppCompatActivity {
             }
         });
 
-        lvGetAll=(ListView) findViewById(R.id.lvGetAll);
         lvGetAll.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LivreUiAdapter uiAdapter = (LivreUiAdapter) lvGetAll.getAdapter();
-                Livre selectedBook = uiAdapter.getItem(position);
-                Intent intentToDetails = new Intent(getApplicationContext(), GetLivreActivity.class);
+                EditeurUiAdapter uiAdapter = (EditeurUiAdapter) lvGetAll.getAdapter();
+                Editeur selectedBook = uiAdapter.getItem(position);
+                Intent intentToDetails = new Intent(getApplicationContext(), GetEditeurActivity.class);
                 intentToDetails.putExtra("id", selectedBook.getId());
                 startActivity(intentToDetails);
             }
         });
-        etGetAll= (EditText) findViewById(R.id.etGetAll);
+
         etGetAll.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -71,7 +72,7 @@ public class GetLivresActivity extends AppCompatActivity {
             }
         });
 
-        async = new GetLivres(btnReturn_GetAll, lvGetAll, getApplicationContext());
+        async = new GetEditeurs(btnReturn_GetAll, lvGetAll, getApplicationContext());
         async.execute();
     }
 }

@@ -12,26 +12,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import be.helha.degreve.Entities.Livre;
-import be.helha.degreve.R;
-import be.helha.degreve.UI.LivreUiAdapter;
-import be.helha.degreve.async.GetLivres;
 
-public class GetLivresActivity extends AppCompatActivity {
+import be.helha.degreve.Entities.Publication;
+import be.helha.degreve.R;
+import be.helha.degreve.UI.PublicationUiAdapter;
+import be.helha.degreve.async.GetPublications;
+
+public class GetPublicationsActivity extends AppCompatActivity {
 
     private static final String TAG = "Simon";
     private Button btnReturn_GetAll;
     private ListView lvGetAll;
     private EditText etGetAll;
-    private GetLivres async;
+    private GetPublications async;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_livres);
+        setContentView(R.layout.activity_get_publications);
         Intent i=getIntent();
 
-        btnReturn_GetAll=(Button) findViewById(R.id.btnReturn_GetAll);
+        btnReturn_GetAll=(Button) findViewById(R.id.publicationsReturn);
         btnReturn_GetAll.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -41,18 +42,18 @@ public class GetLivresActivity extends AppCompatActivity {
             }
         });
 
-        lvGetAll=(ListView) findViewById(R.id.lvGetAll);
+        lvGetAll=(ListView) findViewById(R.id.publicationsLV);
         lvGetAll.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LivreUiAdapter uiAdapter = (LivreUiAdapter) lvGetAll.getAdapter();
-                Livre selectedBook = uiAdapter.getItem(position);
-                Intent intentToDetails = new Intent(getApplicationContext(), GetLivreActivity.class);
+                PublicationUiAdapter uiAdapter = (PublicationUiAdapter) lvGetAll.getAdapter();
+                Publication selectedBook = uiAdapter.getItem(position);
+                Intent intentToDetails = new Intent(getApplicationContext(), GetPublicationActivity.class);
                 intentToDetails.putExtra("id", selectedBook.getId());
                 startActivity(intentToDetails);
             }
         });
-        etGetAll= (EditText) findViewById(R.id.etGetAll);
+        etGetAll= (EditText) findViewById(R.id.publicationsET);
         etGetAll.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -71,7 +72,7 @@ public class GetLivresActivity extends AppCompatActivity {
             }
         });
 
-        async = new GetLivres(btnReturn_GetAll, lvGetAll, getApplicationContext());
+        async = new GetPublications(btnReturn_GetAll, lvGetAll, getApplicationContext());
         async.execute();
     }
 }

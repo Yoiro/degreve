@@ -1,7 +1,5 @@
 package be.helha.degreve.Entities;
 
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 import java.util.List;
 

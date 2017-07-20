@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activities.GetLivresActivity">
+    tools:context=".Activities.GetAuteursActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,12 +16,12 @@
 
         <EditText
             android:hint="@string/allhintet"
-            android:id="@+id/magsET"
+            android:id="@+id/etGetAll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <ListView
-            android:id="@+id/magsLV"
+            android:id="@+id/auteursLV"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:drawSelectorOnTop="false"
@@ -34,7 +34,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/magsReturn"
+                android:id="@+id/auteursReturn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -43,7 +43,7 @@
                 android:text="@string/returnbtn"/>
 
             <Button
-                android:id="@+id/magsAdd"
+                android:id="@+id/auteursAdd"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import be.helha.degreve.R;
 
-public class DetailsActivity extends AppCompatActivity {
+public class GetLivreActivity extends AppCompatActivity {
 
     private Object item;
     private Button btnReturn;
@@ -21,7 +21,7 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
+        setContentView(R.layout.activity_get_livre);
 
         Bundle extras=getIntent().getExtras();
         item=extras.getSerializable("Class");
