@@ -48,7 +48,7 @@ public class GetLivresActivity extends AppCompatActivity {
                 LivreUiAdapter uiAdapter = (LivreUiAdapter) lvGetAll.getAdapter();
                 Livre selectedBook = uiAdapter.getItem(position);
                 Intent intentToDetails = new Intent(getApplicationContext(), GetLivreActivity.class);
-                intentToDetails.putExtra("id", selectedBook.getId());
+                intentToDetails.putExtra("book", selectedBook);
                 startActivity(intentToDetails);
             }
         });

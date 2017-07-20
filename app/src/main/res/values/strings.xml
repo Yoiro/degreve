@@ -11,4 +11,5 @@
     <string name="allhintet">Titre, nom, …</string>
     <string name="returnbtn">Retour</string>
     <string name="deletebtn">Supprimer</string>
+    <string name="addresstitle">Adresse</string>
 </resources>

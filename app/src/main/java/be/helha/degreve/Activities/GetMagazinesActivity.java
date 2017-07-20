@@ -48,7 +48,7 @@ public class GetMagazinesActivity extends AppCompatActivity {
                 MagazineUiAdapter uiAdapter = (MagazineUiAdapter) lvGetAll.getAdapter();
                 Magazine selectedBook = uiAdapter.getItem(position);
                 Intent intentToDetails = new Intent(getApplicationContext(), GetMagazineActivity.class);
-                intentToDetails.putExtra("id", selectedBook.getId());
+                intentToDetails.putExtra("book", selectedBook);
                 startActivity(intentToDetails);
             }
         });

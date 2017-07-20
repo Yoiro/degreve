@@ -11,28 +11,41 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/bookinfo"
+        android:id="@+id/livreinfo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/linearBtn_Details"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/getlivreImage"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/tvTitre_Details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toRightOf="@id/getlivreImage"
+            android:layout_toEndOf="@id/getlivreImage"
+            android:layout_below="@id/getlivreImage"
             android:text="[TITRE]"
-            android:textSize="40sp"/>
+            android:textSize="@dimen/detailTitle"/>
         <TextView
             android:id="@+id/tvType_Details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/detailType"
             android:text="[TYPE]"
-            android:layout_toRightOf="@id/tvTitre_Details"
-            />
+            android:layout_below="@+id/tvTitre_Details" />
 
     </RelativeLayout>
 
@@ -41,7 +54,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <Button
             android:id="@+id/btnReturn_Details"

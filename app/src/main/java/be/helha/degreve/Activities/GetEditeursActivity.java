@@ -49,7 +49,7 @@ public class GetEditeursActivity extends AppCompatActivity {
                 EditeurUiAdapter uiAdapter = (EditeurUiAdapter) lvGetAll.getAdapter();
                 Editeur selectedBook = uiAdapter.getItem(position);
                 Intent intentToDetails = new Intent(getApplicationContext(), GetEditeurActivity.class);
-                intentToDetails.putExtra("id", selectedBook.getId());
+                intentToDetails.putExtra("book", selectedBook);
                 startActivity(intentToDetails);
             }
         });

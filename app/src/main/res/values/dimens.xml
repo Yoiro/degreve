@@ -2,4 +2,9 @@
 <resources>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="detailWidth">20dp</dimen>
+    <dimen name="detailHeight">50dp</dimen>
+    <dimen name="detailTitle">28sp</dimen>
+    <dimen name="detailType">16sp</dimen>
+    <dimen name="adressetitre">20sp</dimen>
 </resources>

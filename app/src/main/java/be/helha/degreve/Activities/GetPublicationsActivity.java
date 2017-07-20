@@ -49,7 +49,7 @@ public class GetPublicationsActivity extends AppCompatActivity {
                 PublicationUiAdapter uiAdapter = (PublicationUiAdapter) lvGetAll.getAdapter();
                 Publication selectedBook = uiAdapter.getItem(position);
                 Intent intentToDetails = new Intent(getApplicationContext(), GetPublicationActivity.class);
-                intentToDetails.putExtra("id", selectedBook.getId());
+                intentToDetails.putExtra("book", selectedBook);
                 startActivity(intentToDetails);
             }
         });

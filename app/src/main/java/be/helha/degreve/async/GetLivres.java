@@ -8,9 +8,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +55,6 @@ public class GetLivres {
                                 String item = response.getString(i);
                                 Livre livre = LivreDeserializer.read(item);
                                 livres.add(livre);
-                                System.out.println(livres);
                                 LivreUiAdapter uiAdapter = new LivreUiAdapter(context, R.layout.livre_list_item, livres);
                                 lvT.setAdapter(uiAdapter);
                             } catch (JSONException e) {
