@@ -30,7 +30,6 @@ public class GetLivreActivity extends AppCompatActivity {
     private Button btnReturn;
     private Button btnMainMenu;
     private TextView tvTitre;
-    private TextView tvType;
     private final String baseUrl = "http://54.76.209.52:8080/api-livres/services/api/livres/";
     private final String imgUrl = "http://54.76.209.52:8080/api-livres/services/files/download/";
     private Livre livre;
@@ -42,7 +41,6 @@ public class GetLivreActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         tvTitre.setText(livre.getTitre());
-                        tvType.setText(livre.getType());
                         loadImage(livre.getId());
                     }
                 },
@@ -83,7 +81,6 @@ public class GetLivreActivity extends AppCompatActivity {
         livre = (Livre)extras.getSerializable("book");
         find();
         tvTitre=(TextView)findViewById(R.id.tvTitre_Details);
-        tvType=(TextView)findViewById(R.id.tvType_Details);
         btnMainMenu=(Button)findViewById(R.id.btnMainMenu_Details);
         btnReturn = (Button) findViewById(R.id.btnReturn_Details);
 

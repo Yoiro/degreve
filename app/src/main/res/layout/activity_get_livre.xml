@@ -37,16 +37,65 @@
             android:layout_below="@id/getlivreImage"
             android:text="[TITRE]"
             android:textSize="@dimen/detailTitle"/>
-        <TextView
-            android:id="@+id/tvType_Details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:textSize="@dimen/detailType"
-            android:text="[TYPE]"
-            android:layout_below="@+id/tvTitre_Details" />
 
+        <LinearLayout
+            android:id="@+id/AdaptationsLayout"
+            android:layout_below="@id/tvTitre_Details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/adaptationtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[ADAPTATIONS]"/>
+
+            <ListView
+                android:id="@+id/lvadaptations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/AuteurLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/AdaptationsLayout">
+            <TextView
+                android:id="@+id/auteurtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[AUTEUR]"/>
+
+            <ListView
+                android:id="@+id/auteursLV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/EditeursLayout"
+            android:layout_below="@id/AuteurLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/editionstitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[EDITIONS]"/>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editionsLV">
+            </ListView>
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout

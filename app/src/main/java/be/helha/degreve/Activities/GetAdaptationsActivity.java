@@ -47,7 +47,7 @@ public class GetAdaptationsActivity extends AppCompatActivity {
                 AdaptationUiAdapter uiAdapter = (AdaptationUiAdapter) lvGetAll.getAdapter();
                 Adaptation selectedBook = uiAdapter.getItem(position);
                 Intent intentToDetails = new Intent(getApplicationContext(), GetAdaptationActivity.class);
-                intentToDetails.putExtra("id", selectedBook.getId());
+                intentToDetails.putExtra("book", selectedBook);
                 startActivity(intentToDetails);
             }
         });
