@@ -1,7 +1,10 @@
 package be.helha.degreve.Entities;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.util.List;
+
 
 /**
  * Created by Alastard on 17/07/2017.
@@ -15,7 +18,6 @@ public class Publication implements Serializable {
     public Publication(){}
 
     public Publication(String type, List<Editeur> editeurs, int id, String titre) {
-
         this.editeurs = editeurs;
         this.id = id;
         this.titre = titre;
@@ -43,5 +45,14 @@ public class Publication implements Serializable {
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+    @Override
+    public String toString() {
+        return "Publication{" +
+                "editeurs=" + editeurs +
+                ", id=" + id +
+                ", titre='" + titre + '\'' +
+                '}';
     }
 }

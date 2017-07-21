@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activities.GetLivreActivity"
+    tools:context=".Activities.GetEditeurActivity"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -16,13 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/linearBtn_Details"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentStart="true">
 
         <TextView
-            android:id="@+id/tvTitre_Details"
+            android:id="@+id/nom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -33,7 +30,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvTitre_Details"
+            android:layout_below="@id/nom"
             android:id="@+id/adressefield"
             android:orientation="vertical">
 
@@ -50,7 +47,9 @@
                     android:id="@+id/num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="[NUMERO]"/>
+                    android:text="[NUMERO]"
+                    android:paddingRight="10dp"
+                    android:paddingEnd="10dp"/>
                 <TextView
                     android:id="@+id/rue"
                     android:layout_width="wrap_content"
@@ -65,18 +64,15 @@
                     android:id="@+id/codepostal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="[CODEPOSTAL]"/>
+                    android:text="[CODEPOSTAL]"
+                    android:paddingRight="10dp"
+                    android:paddingEnd="10dp"/>
                 <TextView
                     android:id="@+id/ville"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="[VILLE]"/>
             </LinearLayout>
-            <TextView
-                android:id="@+id/pays"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="[PAYS]"/>
         </LinearLayout>
 
         <ListView
@@ -85,34 +81,34 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/adressefield">
         </ListView>
+
+        <RelativeLayout
+            android:id="@+id/linearBtn_Details"
+            android:layout_below="@id/lvlivres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:id="@+id/btnReturn_Details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/returnbtn"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
+
+            <Button
+                android:id="@+id/btnMainMenu_Details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mainmenu"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/linearBtn_Details"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <Button
-            android:id="@+id/btnReturn_Details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/returnbtn"/>
-
-        <Button
-            android:id="@+id/btnDel_Details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/deletebtn"/>
-
-        <Button
-            android:id="@+id/btnMainMenu_Details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mainmenu" />
-    </LinearLayout>
 </RelativeLayout>

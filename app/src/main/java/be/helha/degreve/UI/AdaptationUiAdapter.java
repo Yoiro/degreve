@@ -47,6 +47,9 @@ public class AdaptationUiAdapter extends ArrayAdapter<Adaptation>{
         }
         TextView tvName=(TextView) tuile.findViewById(R.id.adaptationitemTV);
         tvName.setText(current.getTitre());
+        TextView year = (TextView) tuile.findViewById(R.id.adaptationitemAnnee);
+        String string = "" + current.getAnnee();
+        year.setText(string);
         return tuile;
     }
 }

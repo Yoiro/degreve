@@ -81,7 +81,7 @@ public class GetAuteurs {
                 filterList.add(item);
             }
         }
-        AuteurUiAdapter uiAdapter = new AuteurUiAdapter(context, R.layout.livre_list_item, filterList);
+        AuteurUiAdapter uiAdapter = new AuteurUiAdapter(context, R.layout.auteur_list_item, filterList);
         lvT.setAdapter(uiAdapter);
     }
 }

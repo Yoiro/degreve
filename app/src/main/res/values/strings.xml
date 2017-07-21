@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">degreve</string>
     <string name="mainmenu">Menu Principal</string>
-    <string name="booksbtn">Livres</string>
-    <string name="publicationsbtn">Publications</string>
-    <string name="magsbtn">Magazines</string>
-    <string name="adaptationsbtn">Adaptations</string>
-    <string name="autorsbtn">Auteurs</string>
-    <string name="editorsbtn">Editeurs</string>
+    <string name="booksbtn">Parcourir les Livres</string>
+    <string name="publicationsbtn">Parcourir les publications</string>
+    <string name="magsbtn">Parcourir les Magazines</string>
+    <!--<string name="adaptationsbtn">Adaptations</string>-->
+    <string name="autorsbtn">Parcourir les Auteurs</string>
+    <string name="editorsbtn">Parcourir les Editeurs</string>
     <string name="alladdbtn">Ajouter</string>
     <string name="allhintet">Titre, nom, …</string>
     <string name="returnbtn">Retour</string>

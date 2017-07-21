@@ -49,8 +49,8 @@ public class GetAuteursActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AuteurUiAdapter uiAdapter = (AuteurUiAdapter) lvGetAll.getAdapter();
                 Auteur selectedBook = uiAdapter.getItem(position);
-                Intent intentToDetails = new Intent(getApplicationContext(), GetAdaptationActivity.class);
-                intentToDetails.putExtra("id", selectedBook.getId());
+                Intent intentToDetails = new Intent(getApplicationContext(), GetAuteurActivity.class);
+                intentToDetails.putExtra("book", selectedBook);
                 startActivity(intentToDetails);
             }
         });

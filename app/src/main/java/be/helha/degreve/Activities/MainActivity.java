@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         //ok
         btnGetAllEdits = (Button) findViewById(R.id.editorsbtn);
         btnGetAllMags = (Button) findViewById(R.id.magsbtn);
-        btnGetAllAdaptations = (Button) findViewById(R.id.adaptationsbtn);
+        //btnGetAllAdaptations = (Button) findViewById(R.id.adaptationsbtn);
 
         btnGetAllMags.setOnClickListener(new View.OnClickListener() {
 
@@ -92,15 +92,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnGetAllAdaptations.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Adaptation a = new Adaptation();
-                Intent intent = new Intent(getApplicationContext(), GetAdaptationsActivity.class);
-                intent.putExtra("Class", a);
-                startActivity(intent);
-            }
-        });
+//        btnGetAllAdaptations.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Adaptation a = new Adaptation();
+//                Intent intent = new Intent(getApplicationContext(), GetAdaptationsActivity.class);
+//                intent.putExtra("Class", a);
+//                startActivity(intent);
+//            }
+//        });
     }
 }
 

@@ -25,10 +25,10 @@
         <activity android:name=".Activities.GetMagazineActivity" />
         <activity android:name=".Activities.GetPublicationActivity" />
         <activity android:name=".Activities.GetAdaptationsActivity" />
-        <activity android:name=".Activities.GetAdaptationActivity" />
         <activity android:name=".Activities.GetAuteursActivity" />
         <activity android:name=".Activities.GetEditeursActivity" />
-        <activity android:name=".Activities.GetEditeurActivity"></activity>
+        <activity android:name=".Activities.GetEditeurActivity" />
+        <activity android:name=".Activities.GetAuteurActivity"></activity>
     </application>
 
 </manifest>

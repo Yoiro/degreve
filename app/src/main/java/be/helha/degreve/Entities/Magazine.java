@@ -28,4 +28,11 @@ public class Magazine extends MotherBook implements Serializable {
     public void setPeriodicite(String periodicite) {
         this.periodicite = periodicite;
     }
+
+    @Override
+    public String toString() {
+        return "Magazine{" +
+                "periodicite='" + periodicite + '\'' +
+                '}';
+    }
 }

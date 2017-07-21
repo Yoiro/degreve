@@ -39,9 +39,11 @@ public class AuteurUiAdapter extends ArrayAdapter<Auteur> {
     public View getView(int position, View convertView, ViewGroup parent){
         if(list.size()>0) {
             Auteur current = list.get(position);
+            System.out.println(current.toString());
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View tuile = inflater.inflate(this.tuile_layout, parent, false);
             TextView tvName = (TextView) tuile.findViewById(R.id.auteuritemTV);
+            System.out.println(tvName);
             tvName.setText(current.getNom());
             return tuile;
         }

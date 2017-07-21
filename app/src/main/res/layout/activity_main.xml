@@ -45,18 +45,18 @@
             android:layout_below="@id/publicationsbtn"
             android:text="@string/magsbtn"/>
 
-        <Button
-            android:id="@+id/adaptationsbtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/magsbtn"
-            android:text="@string/adaptationsbtn"/>
+        <!--<Button-->
+            <!--android:id="@+id/adaptationsbtn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/magsbtn"-->
+            <!--android:text="@string/adaptationsbtn"/>-->
 
         <Button
             android:id="@+id/autorsbtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/adaptationsbtn"
+            android:layout_below="@id/magsbtn"
             android:text="@string/autorsbtn"/>
 
         <Button

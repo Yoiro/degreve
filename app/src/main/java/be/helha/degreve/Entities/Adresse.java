@@ -62,4 +62,15 @@ public class Adresse implements Serializable{
     public void setVille(String ville) {
         this.ville = ville;
     }
+
+    @Override
+    public String toString() {
+        return "Adresse{" +
+                "codePostal=" + codePostal +
+                ", id=" + id +
+                ", numero='" + numero + '\'' +
+                ", rue='" + rue + '\'' +
+                ", ville='" + ville + '\'' +
+                '}';
+    }
 }

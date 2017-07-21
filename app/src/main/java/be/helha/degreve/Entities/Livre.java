@@ -12,6 +12,7 @@ public class Livre extends MotherBook implements Serializable{
 
     public Livre(){}
     public Livre(String type, List<Editeur> editeurs, int id, String titre, List<Adaptation> adaptations, List<Auteur> auteurs) {
+        super(type, editeurs, id, titre);
         this.adaptations = adaptations;
         this.auteurs = auteurs;
     }
@@ -32,4 +33,11 @@ public class Livre extends MotherBook implements Serializable{
         this.auteurs = auteurs;
     }
 
+    @Override
+    public String toString() {
+        return "Livre{" +
+                "adaptations=" + adaptations +
+                ", auteurs=" + auteurs +
+                '}';
+    }
 }

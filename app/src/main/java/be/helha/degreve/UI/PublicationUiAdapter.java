@@ -37,9 +37,6 @@ public class PublicationUiAdapter extends ArrayAdapter<Publication> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         Publication current=list.get(position);
-        for(Publication p: list){
-            System.out.println(p.getTitre());
-        }
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View tuile=inflater.inflate(this.tuile_layout,parent, false);
         NetworkImageView networkImageView = (NetworkImageView) tuile.findViewById(R.id.publicationitemIMG);

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.List;
@@ -42,11 +43,7 @@ public class LivreUiAdapter extends ArrayAdapter<Livre> {
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View tuile=inflater.inflate(this.tuile_layout,parent, false);
         NetworkImageView networkImageView = (NetworkImageView) tuile.findViewById(R.id.lvGetAll_imgThumbLivre);
-        try{
-            networkImageView.setImageUrl(imageUrl+current.getId(), Singleton.getInstance(context).getImageLoader());
-        } catch (Exception e){
-            networkImageView.setImageResource(R.mipmap.ic_launcher);
-        }
+        networkImageView.setImageUrl(imageUrl+current.getId(), Singleton.getInstance(context).getImageLoader());
         TextView tvName=(TextView) tuile.findViewById(R.id.lvGetAll_nameLivre);
         tvName.setText(current.getTitre());
         return tuile;

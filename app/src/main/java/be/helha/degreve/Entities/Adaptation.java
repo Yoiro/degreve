@@ -41,4 +41,13 @@ public class Adaptation implements Serializable{
     public void setTitre(String titre) {
         this.titre = titre;
     }
+
+    @Override
+    public String toString() {
+        return "Adaptation{" +
+                "annee=" + annee +
+                ", id=" + id +
+                ", titre='" + titre + '\'' +
+                '}';
+    }
 }

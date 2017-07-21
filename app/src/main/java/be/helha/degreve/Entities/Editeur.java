@@ -42,4 +42,13 @@ public class Editeur implements Serializable{
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    @Override
+    public String toString() {
+        return "Editeur{" +
+                "adresse=" + adresse.toString() +
+                ", id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
+    }
 }

@@ -80,7 +80,7 @@ public class GetPublications {
                 filterList.add(item);
             }
         }
-        PublicationUiAdapter uiAdapter = new PublicationUiAdapter(context, R.layout.livre_list_item, filterList);
+        PublicationUiAdapter uiAdapter = new PublicationUiAdapter(context, R.layout.publication_list_item, filterList);
         lvT.setAdapter(uiAdapter);
     }
 }

@@ -53,4 +53,14 @@ public class MotherBook implements Serializable {
     public void setTitre(String titre) {
         this.titre = titre;
     }
+
+    @Override
+    public String toString() {
+        return "MotherBook{" +
+                "type='" + type + '\'' +
+                ", editeurs=" + editeurs +
+                ", id=" + id +
+                ", titre='" + titre + '\'' +
+                '}';
+    }
 }

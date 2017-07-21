@@ -41,16 +41,16 @@ public class GetAdaptationsActivity extends AppCompatActivity {
         });
 
         lvGetAll=(ListView) findViewById(R.id.adaptationsLV);
-        lvGetAll.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AdaptationUiAdapter uiAdapter = (AdaptationUiAdapter) lvGetAll.getAdapter();
-                Adaptation selectedBook = uiAdapter.getItem(position);
-                Intent intentToDetails = new Intent(getApplicationContext(), GetAdaptationActivity.class);
-                intentToDetails.putExtra("book", selectedBook);
-                startActivity(intentToDetails);
-            }
-        });
+//        lvGetAll.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                AdaptationUiAdapter uiAdapter = (AdaptationUiAdapter) lvGetAll.getAdapter();
+//                Adaptation selectedBook = uiAdapter.getItem(position);
+//                Intent intentToDetails = new Intent(getApplicationContext(), GetAdaptationActivity.class);
+//                intentToDetails.putExtra("book", selectedBook);
+//                startActivity(intentToDetails);
+//            }
+//        });
         etGetAll= (EditText) findViewById(R.id.etGetAll);
         etGetAll.addTextChangedListener(new TextWatcher() {
 
