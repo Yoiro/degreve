@@ -33,6 +33,7 @@ public class GetAuteurActivity extends AppCompatActivity {
     private Auteur auteur;
     private List<Livre> livres = new ArrayList<>();
     private TextView tvNom;
+    private TextView nomclasse;
     private ListView lvLivres;
     private Button btnReturn;
     private Button btnDelete;
@@ -90,9 +91,12 @@ public class GetAuteurActivity extends AppCompatActivity {
         i.getExtras();
         auteur = (Auteur) i.getSerializableExtra("book");
         tvNom = (TextView) findViewById(R.id.nom);
+        nomclasse = (TextView) findViewById(R.id.nomclasse);
+
         tvNom.setText(auteur.getNom());
+        nomclasse.setText(auteur.getClass().getSimpleName());
         btnReturn = (Button) findViewById(R.id.btnReturn_Details);
-        btnDelete = (Button) findViewById(R.id.btnDel_Details);
+//        btnDelete = (Button) findViewById(R.id.btnDel_Details);
         btnMainMenu = (Button) findViewById(R.id.btnMainMenu_Details);
 
         btnReturn.setOnClickListener(new View.OnClickListener() {

@@ -9,6 +9,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import be.helha.degreve.Entities.Livre;
+import be.helha.degreve.Entities.Magazine;
+import be.helha.degreve.Entities.Publication;
+
 /**
  * Created by Alastard on 17/07/2017.
  */
@@ -17,10 +24,13 @@ public class Singleton {
     private static Singleton instance;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
-    private static Context context;
+    private Context context;
+    private List<Livre> livres;
+    private List<Magazine> magazines;
+    private List<Publication> publications;
 
-    private Singleton(Context context){
-        this.context = context;
+    private Singleton(Context con){
+        context = con;
         requestQueue = getRequestQueue();
         imageLoader = new ImageLoader(requestQueue,
                 new ImageLoader.ImageCache() {
@@ -61,5 +71,29 @@ public class Singleton {
 
     public ImageLoader getImageLoader() {
         return imageLoader;
+    }
+
+    public List<Livre> getLivres() {
+        return livres;
+    }
+
+    public void setLivres(List<Livre> livres) {
+        this.livres = livres;
+    }
+
+    public List<Magazine> getMagazines() {
+        return magazines;
+    }
+
+    public void setMagazines(List<Magazine> magazines) {
+        this.magazines = magazines;
+    }
+
+    public List<Publication> getPublications() {
+        return publications;
+    }
+
+    public void setPublications(List<Publication> publications) {
+        this.publications = publications;
     }
 }

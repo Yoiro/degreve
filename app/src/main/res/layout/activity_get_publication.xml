@@ -15,17 +15,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/nomclasse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/typeTitle"
+            android:text="[TYPE]"/>
+
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/getmagazineImage"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nomclasse"/>
 
         <TextView
             android:id="@+id/tvTitre_Details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/getlivreImage"
-            android:layout_toEndOf="@id/getlivreImage"
+            android:layout_below="@id/getmagazineImage"
             android:text="[TITRE]"
             android:textSize="@dimen/detailTitle"/>
 
@@ -48,11 +55,11 @@
             android:layout_height="wrap_content"
             android:text="@string/returnbtn"/>
 
-        <Button
-            android:id="@+id/btnDel_Details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/deletebtn"/>
+        <!--<Button-->
+            <!--android:id="@+id/btnDel_Details"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/deletebtn"/>-->
 
         <Button
             android:id="@+id/btnMainMenu_Details"

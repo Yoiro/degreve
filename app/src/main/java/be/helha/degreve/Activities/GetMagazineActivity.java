@@ -6,8 +6,10 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -19,8 +21,10 @@ import com.android.volley.toolbox.NetworkImageView;
 
 import org.json.JSONObject;
 
+import be.helha.degreve.Entities.Editeur;
 import be.helha.degreve.Entities.Magazine;
 import be.helha.degreve.R;
+import be.helha.degreve.UI.EditeurUiAdapter;
 import be.helha.degreve.async.Singleton;
 
 public class GetMagazineActivity extends AppCompatActivity {
@@ -28,11 +32,32 @@ public class GetMagazineActivity extends AppCompatActivity {
     private Button btnReturn;
     private Button btnMainMenu;
     private TextView tvTitre;
-    private TextView tvType;
+    private TextView nomclasse;
+    private TextView periodicite;
+    private TextView editionsTitle;
+    private ListView lvEditions;
+
     private Magazine livre;
     private final String baseUrl = "http://54.76.209.52:8080/api-livres/services/api/magazines/";
     private final String imgUrl = "http://54.76.209.52:8080/api-livres/services/files/download/";
 
+    public void setEditeurs(){
+        if(livre.getEditeurs()!=null && livre.getEditeurs().size()>0){
+            editionsTitle.setText("EDITEURS");
+            lvEditions = (ListView) findViewById(R.id.editionsLV);
+            lvEditions.setAdapter(new EditeurUiAdapter(getApplicationContext(), R.layout.editeur_list_item, livre.getEditeurs()));
+            lvEditions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Editeur e = (Editeur) lvEditions.getItemAtPosition(position);
+                    Intent intent = new Intent(getApplicationContext(), GetEditeurActivity.class);
+                    intent.putExtra("book", e);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
+        } else editionsTitle.setText("");
+    }
 
     public void find() {
         String urlWithId = baseUrl + livre.getTitre();
@@ -41,7 +66,8 @@ public class GetMagazineActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         tvTitre.setText(livre.getTitre());
-                        tvType.setText(livre.getType());
+                        editionsTitle.setText("EDITEURS");
+                        periodicite.setText(livre.getPeriodicite());
                         loadImage(livre.getId());
                     }
                 },
@@ -82,10 +108,14 @@ public class GetMagazineActivity extends AppCompatActivity {
         livre = (Magazine)extras.getSerializable("book");
         find();
         tvTitre=(TextView)findViewById(R.id.tvTitre_Details);
-        tvType=(TextView)findViewById(R.id.tvType_Details);
+        periodicite =(TextView)findViewById(R.id.periodicite);
+        nomclasse=(TextView)findViewById(R.id.nomclasse);
+        editionsTitle = (TextView) findViewById(R.id.editionstitle);
+        lvEditions = (ListView) findViewById(R.id.editionsLV);
         btnMainMenu=(Button)findViewById(R.id.btnMainMenu_Details);
         btnReturn = (Button) findViewById(R.id.btnReturn_Details);
 
+        nomclasse.setText(livre.getClass().getSimpleName());
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +133,8 @@ public class GetMagazineActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        setEditeurs();
 
     }
 }

@@ -1,6 +1,7 @@
 package be.helha.degreve.async;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -15,6 +16,8 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.helha.degreve.Entities.Livre;
+import be.helha.degreve.Entities.Magazine;
 import be.helha.degreve.Entities.Publication;
 import be.helha.degreve.R;
 import be.helha.degreve.Serialization.PublicationDeserializer;
@@ -31,17 +34,18 @@ public class GetPublications {
     private Context context;
     private List<Publication> publications =new ArrayList<>();
 
+
     public GetPublications(Button btn, ListView lv, Context cont) {
         btnReturn = btn;
         lvT=lv;
         context = cont;
     }
 
-    /**
-     * Cette méthode va communiquer directement avec l'API afin de récupérer la liste de tous les objets de types publications.
-     */
-    public void execute(){
-        //Utilisation de Volley afin de créer une requête JSon
+    public GetPublications(Context context){
+        this.context = context;
+    }
+
+    public void fill_Singleton(){
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>(){
                     //Ici, nous récupérons la réponse à la requête
@@ -52,10 +56,9 @@ public class GetPublications {
                         for(int i = 0; i < response.length(); i++){
                             try {
                                 String item = response.getString(i);
-                                Publication publication = PublicationDeserializer.read(item);
-                                publications.add(publication);
-                                PublicationUiAdapter uiAdapter = new PublicationUiAdapter(context, R.layout.publication_list_item, publications);
-                                lvT.setAdapter(uiAdapter);
+                                Publication livre = PublicationDeserializer.read(item);
+                                publications.add(livre);
+                                Singleton.getInstance(context).setPublications(publications);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -72,6 +75,20 @@ public class GetPublications {
         Singleton.getInstance(context).addToRequestQueue(request);
     }
 
+    /**
+     * Cette méthode va communiquer directement avec l'API afin de récupérer la liste de tous les objets de types publications.
+     */
+    public void execute(){
+        AsyncTask<String, Void, List<Publication>> async = new AsyncTask<String, Void, List<Publication>>() {
+            @Override
+            protected List<Publication> doInBackground(String... params) {
+                publications = Singleton.getInstance(context).getPublications();
+                return publications;
+            }
+        };
+        async.execute();
+    }
+
     public void execute(CharSequence s){
         List<Publication> filterList = new ArrayList<>();
         for(int i = 0; i < publications.size(); i++){
@@ -83,4 +100,5 @@ public class GetPublications {
         PublicationUiAdapter uiAdapter = new PublicationUiAdapter(context, R.layout.publication_list_item, filterList);
         lvT.setAdapter(uiAdapter);
     }
+
 }

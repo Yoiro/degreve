@@ -1,6 +1,7 @@
 package be.helha.degreve.async;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -38,11 +39,11 @@ public class GetLivres {
         context = cont;
     }
 
-    /**
-     * Cette méthode va communiquer directement avec l'API afin de récupérer la liste de tous les objets de types livres.
-     */
-    public void execute(){
-        //Utilisation de Volley afin de créer une requête JSon
+    public GetLivres(Context context) {
+        this.context = context;
+    }
+
+    public void fill_Singleton(){
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>(){
                     //Ici, nous récupérons la réponse à la requête
@@ -55,8 +56,7 @@ public class GetLivres {
                                 String item = response.getString(i);
                                 Livre livre = LivreDeserializer.read(item);
                                 livres.add(livre);
-                                LivreUiAdapter uiAdapter = new LivreUiAdapter(context, R.layout.livre_list_item, livres);
-                                lvT.setAdapter(uiAdapter);
+                                Singleton.getInstance(context).setLivres(livres);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -73,6 +73,17 @@ public class GetLivres {
         Singleton.getInstance(context).addToRequestQueue(request);
     }
 
+    public void execute(){
+        AsyncTask<String, Void, List<Livre>> async = new AsyncTask<String, Void, List<Livre>>() {
+            @Override
+            protected List<Livre> doInBackground(String... params) {
+                livres = Singleton.getInstance(context).getLivres();
+                return livres;
+            }
+        };
+        async.execute();
+    }
+
     public void execute(CharSequence s){
         List<Livre> filterList = new ArrayList<>();
         for(int i=0; i < livres.size(); i++){
@@ -85,4 +96,8 @@ public class GetLivres {
         lvT.setAdapter(uiAdapter);
     }
 
+    public void updateUi(){
+        LivreUiAdapter uiAdapter = new LivreUiAdapter(context, R.layout.livre_list_item, livres);
+        lvT.setAdapter(uiAdapter);
+    }
 }

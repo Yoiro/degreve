@@ -20,6 +20,12 @@
         android:layout_above="@+id/linearBtn_Details"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">
+        <TextView
+            android:id="@+id/nomclasse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/typeTitle"
+            android:text="[TYPE]"/>
 
         <TextView
             android:id="@+id/nom"
@@ -28,7 +34,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:text="[NOM]"
-            android:textSize="@dimen/detailTitle"/>
+            android:textSize="@dimen/detailTitle"
+            android:layout_below="@id/nomclasse"/>
 
         <ListView
             android:id="@+id/lvlivres"
@@ -54,11 +61,11 @@
             android:layout_height="wrap_content"
             android:text="@string/returnbtn"/>
 
-        <Button
-            android:id="@+id/btnDel_Details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/deletebtn"/>
+        <!--<Button-->
+            <!--android:id="@+id/btnDel_Details"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/deletebtn"/>-->
 
         <Button
             android:id="@+id/btnMainMenu_Details"

@@ -16,6 +16,7 @@ import be.helha.degreve.Entities.Magazine;
 import be.helha.degreve.R;
 import be.helha.degreve.UI.MagazineUiAdapter;
 import be.helha.degreve.async.GetMagazines;
+import be.helha.degreve.async.Singleton;
 
 public class GetMagazinesActivity extends AppCompatActivity {
 
@@ -73,5 +74,11 @@ public class GetMagazinesActivity extends AppCompatActivity {
 
         async = new GetMagazines(btnReturn_GetAll, lvGetAll, getApplicationContext());
         async.execute();
+        updateUi();
+    }
+
+    public void updateUi(){
+        MagazineUiAdapter uiAdapter = new MagazineUiAdapter(getApplicationContext(), R.layout.mag_list_item, Singleton.getInstance(getApplicationContext()).getMagazines());
+        lvGetAll.setAdapter(uiAdapter);
     }
 }

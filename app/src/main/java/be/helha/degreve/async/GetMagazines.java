@@ -1,6 +1,7 @@
 package be.helha.degreve.async;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -37,11 +38,11 @@ public class GetMagazines {
         context = cont;
     }
 
-    /**
-     * Cette méthode va communiquer directement avec l'API afin de récupérer la liste de tous les objets de types mags.
-     */
-    public void execute(){
-        //Utilisation de Volley afin de créer une requête JSon
+    public GetMagazines(Context context) {
+        this.context = context;
+    }
+
+    public void fill_Singleton(){
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>(){
                     //Ici, nous récupérons la réponse à la requête
@@ -52,11 +53,9 @@ public class GetMagazines {
                         for(int i = 0; i < response.length(); i++){
                             try {
                                 String item = response.getString(i);
-                                Magazine mag = MagazineDeserializer.read(item);
-                                mags.add(mag);
-                                System.out.println(mags);
-                                MagazineUiAdapter uiAdapter = new MagazineUiAdapter(context, R.layout.mag_list_item, mags);
-                                lvT.setAdapter(uiAdapter);
+                                Magazine livre = MagazineDeserializer.read(item);
+                                mags.add(livre);
+                                Singleton.getInstance(context).setMagazines(mags);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -73,6 +72,18 @@ public class GetMagazines {
         Singleton.getInstance(context).addToRequestQueue(request);
     }
 
+    public void execute(){
+        AsyncTask<String, Void, List<Magazine>> async = new AsyncTask<String, Void, List<Magazine>>() {
+            @Override
+            protected List<Magazine> doInBackground(String... params) {
+                mags = Singleton.getInstance(context).getMagazines();
+
+                return mags;
+            }
+        };
+        async.execute();
+    }
+
     public void execute(CharSequence s){
         List<Magazine> filterList = new ArrayList<>();
         for(int i = 0; i < mags.size(); i++){
@@ -81,7 +92,12 @@ public class GetMagazines {
                 filterList.add(item);
             }
         }
-        MagazineUiAdapter uiAdapter = new MagazineUiAdapter(context, R.layout.livre_list_item, filterList);
+        MagazineUiAdapter uiAdapter = new MagazineUiAdapter(context, R.layout.mag_list_item, filterList);
+        lvT.setAdapter(uiAdapter);
+    }
+
+    public void updateUi(){
+        MagazineUiAdapter uiAdapter = new MagazineUiAdapter(context, R.layout.mag_list_item, mags);
         lvT.setAdapter(uiAdapter);
     }
 }

@@ -40,6 +40,7 @@ public class GetLivreActivity extends AppCompatActivity {
     private TextView tvTitre;
     private NetworkImageView getlivreImage;
     private TextView adaptationTitle;
+    private TextView nomclasse;
     private ListView lvAdaptations;
     private TextView auteurTitle;
     private ListView lvAuteur;
@@ -138,12 +139,15 @@ public class GetLivreActivity extends AppCompatActivity {
         livre = (Livre)extras.getSerializable("book");
 
         tvTitre=(TextView)findViewById(R.id.tvTitre_Details);
+        nomclasse=(TextView)findViewById(R.id.nomclasse);
         adaptationTitle = (TextView) findViewById(R.id.adaptationtitle);
         editionsTitle = (TextView) findViewById(R.id.editionstitle);
         auteurTitle = (TextView) findViewById(R.id.auteurtitle);
         btnMainMenu=(Button)findViewById(R.id.btnMainMenu_Details);
         btnReturn = (Button) findViewById(R.id.btnReturn_Details);
         getlivreImage = (NetworkImageView) findViewById(R.id.getlivreImage);
+
+        nomclasse.setText(livre.getClass().getSimpleName());
 
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override

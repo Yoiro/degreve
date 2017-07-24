@@ -3,6 +3,7 @@ package be.helha.degreve.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,10 +14,13 @@ import be.helha.degreve.Entities.Livre;
 import be.helha.degreve.Entities.Magazine;
 import be.helha.degreve.Entities.Publication;
 import be.helha.degreve.R;
+import be.helha.degreve.async.GetLivres;
+import be.helha.degreve.async.GetMagazines;
+import be.helha.degreve.async.GetPublications;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnGetAllBooks, btnGetAllPubs, btnGetAllEdits, btnGetAllMags, btnGetAllAuthors, btnGetAllAdaptations;
+    private Button btnGetAllBooks, btnGetAllPubs, btnGetAllEdits, btnGetAllMags, btnGetAllAuthors;
 
     @Override
     protected void onRestart() {
@@ -28,16 +32,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //ok
         btnGetAllPubs = (Button) findViewById(R.id.publicationsbtn);
-        //ok
         btnGetAllAuthors = (Button) findViewById(R.id.autorsbtn);
-        //ok
         btnGetAllBooks = (Button) findViewById(R.id.booksbtn);
-        //ok
         btnGetAllEdits = (Button) findViewById(R.id.editorsbtn);
         btnGetAllMags = (Button) findViewById(R.id.magsbtn);
-        //btnGetAllAdaptations = (Button) findViewById(R.id.adaptationsbtn);
 
         btnGetAllMags.setOnClickListener(new View.OnClickListener() {
 
@@ -92,15 +91,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btnGetAllAdaptations.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Adaptation a = new Adaptation();
-//                Intent intent = new Intent(getApplicationContext(), GetAdaptationsActivity.class);
-//                intent.putExtra("Class", a);
-//                startActivity(intent);
-//            }
-//        });
+        GetLivres livresAsync = new GetLivres(getApplicationContext());
+        livresAsync.fill_Singleton();
+        Log.i("Main.ONCREATE", "Livres chargés");
+        GetPublications publicationsAsync = new GetPublications(getApplicationContext());
+        publicationsAsync.fill_Singleton();
+        Log.i("Main.ONCREATE", "Publications chargées");
+        GetMagazines magazinesAsync = new GetMagazines(getApplicationContext());
+        magazinesAsync.fill_Singleton();
+        Log.i("Main.ONCREATE", "Magazines chargés");
     }
 }
 

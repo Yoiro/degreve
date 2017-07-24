@@ -20,11 +20,18 @@
         android:layout_above="@+id/linearBtn_Details"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">
+        <TextView
+            android:id="@+id/nomclasse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/typeTitle"
+            android:text="[TYPE]"/>
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/getlivreImage"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nomclasse"/>
 
         <TextView
             android:id="@+id/tvTitre_Details"

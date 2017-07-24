@@ -2,6 +2,7 @@ package be.helha.degreve.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,10 +14,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 
+import java.util.List;
+
+import be.helha.degreve.Entities.Livre;
+import be.helha.degreve.Entities.Magazine;
 import be.helha.degreve.Entities.Publication;
 import be.helha.degreve.R;
 import be.helha.degreve.UI.PublicationUiAdapter;
 import be.helha.degreve.async.GetPublications;
+import be.helha.degreve.async.Singleton;
 
 public class GetPublicationsActivity extends AppCompatActivity {
 
@@ -25,6 +31,8 @@ public class GetPublicationsActivity extends AppCompatActivity {
     private ListView lvGetAll;
     private EditText etGetAll;
     private GetPublications async;
+    private boolean isBook;
+    private boolean isMag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +56,21 @@ public class GetPublicationsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PublicationUiAdapter uiAdapter = (PublicationUiAdapter) lvGetAll.getAdapter();
                 Publication selectedBook = uiAdapter.getItem(position);
-                Intent intentToDetails = new Intent(getApplicationContext(), GetPublicationActivity.class);
-                intentToDetails.putExtra("book", selectedBook);
-                startActivity(intentToDetails);
+                Livre livre = isBook(selectedBook);
+                if(isBook){
+                    Intent intentToDetails = new Intent(getApplicationContext(), GetLivreActivity.class);
+                    intentToDetails.putExtra("book", livre);
+                    startActivity(intentToDetails);
+                } else{
+                    Magazine mag = isMagazine(selectedBook);
+                    if (isMag){
+                        Intent intentToDetails = new Intent(getApplicationContext(), GetMagazineActivity.class);
+                        intentToDetails.putExtra("book", mag);
+                        System.out.println(mag.toString());
+                        startActivity(intentToDetails);
+                    }
+                }
+
             }
         });
         etGetAll= (EditText) findViewById(R.id.publicationsET);
@@ -74,5 +94,33 @@ public class GetPublicationsActivity extends AppCompatActivity {
 
         async = new GetPublications(btnReturn_GetAll, lvGetAll, getApplicationContext());
         async.execute();
+        updateUi();
+    }
+
+    public Livre isBook(Publication livre){
+        List<Livre> livreList = Singleton.getInstance(getApplicationContext()).getLivres();
+        for(int i = 0; i < livreList.size(); i++){
+            if(livre.getTitre().equals(livreList.get(i).getTitre())){
+                isBook = true;
+                return livreList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Magazine isMagazine(Publication livre){
+        List<Magazine> magazineList = Singleton.getInstance(getApplicationContext()).getMagazines();
+        for(int i = 0; i < magazineList.size(); i++){
+            if(livre.getTitre().equals(magazineList.get(i).getTitre())){
+                isMag = true;
+                return magazineList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void updateUi(){
+        PublicationUiAdapter uiAdapter = new PublicationUiAdapter(getApplicationContext(), R.layout.publication_list_item, Singleton.getInstance(getApplicationContext()).getPublications());
+        lvGetAll.setAdapter(uiAdapter);
     }
 }

@@ -8,4 +8,5 @@
     <dimen name="detailType">16sp</dimen>
     <dimen name="adressetitre">20sp</dimen>
     <dimen name="adaptationannee">16sp</dimen>
+    <dimen name="typeTitle">18sp</dimen>
 </resources>

@@ -40,12 +40,16 @@ public class GetEditeurActivity extends AppCompatActivity {
     private Button btnReturn;
     private Button btnMainMenu;
     private TextView tvNom;
+    private TextView nomclasse;
     private TextView num;
     private TextView rue;
     private TextView codepostal;
     private TextView ville;
 
     private ListView lvLivres;
+
+    private boolean isLivre;
+    private boolean isMagazine;
 
     public void findPublications(){
         String url = "http://54.76.209.52:8080/api-livres/services/api/publications";
@@ -59,7 +63,7 @@ public class GetEditeurActivity extends AppCompatActivity {
                         for(Editeur e: publication.getEditeurs()){
                             if(e.getId() == editeur.getId()){
                                 publications.add(publication);
-                                setLivres();
+                                setPublications();
                             }
                         }
                     } catch (JSONException e) {
@@ -76,25 +80,31 @@ public class GetEditeurActivity extends AppCompatActivity {
         Singleton.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 
-    public void setLivres(){
+    public void setPublications(){
         lvLivres = (ListView) findViewById(R.id.lvlivres);
         PublicationUiAdapter uiAdapter = new PublicationUiAdapter(getApplicationContext(), R.layout.publication_list_item, publications);
         lvLivres.setAdapter(uiAdapter);
-//        lvLivres.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Publication publication = (Publication)lvLivres.getItemAtPosition(position);
-//                if(publication.isBook()) {
-//                    Livre livre = (Livre) lvLivres.getItemAtPosition(position);
-//                    Intent intent = new Intent(getApplicationContext(), GetLivreActivity.class);
-//                    intent.putExtra("book", livre.getId());
-//                } else{
-//                    Magazine livre = (Magazine) lvLivres.getItemAtPosition(position);
-//                    Intent intent = new Intent(getApplicationContext(), GetMagazineActivity.class);
-//                    intent.putExtra("book", livre.getId());
-//                }
-//            }
-//        });
+        lvLivres.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Publication book = (Publication)lvLivres.getItemAtPosition(position);
+                Livre livre = isLivre(book);
+                if (isLivre){
+                    Intent intent = new Intent(getApplicationContext(), GetLivreActivity.class);
+                    intent.putExtra("book", livre);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                } else{
+                    Magazine mag = isMagazine(book);
+                    if(isMagazine){
+                        Intent intent = new Intent(getApplicationContext(), GetMagazineActivity.class);
+                        intent.putExtra("book", mag);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -106,6 +116,7 @@ public class GetEditeurActivity extends AppCompatActivity {
         editeur = (Editeur) i.getSerializableExtra("book");
 
         tvNom = (TextView) findViewById(R.id.nom);
+        nomclasse = (TextView) findViewById(R.id.nomclasse);
         num = (TextView) findViewById(R.id.num);
         rue = (TextView) findViewById(R.id.rue);
         codepostal = (TextView) findViewById(R.id.codepostal);
@@ -114,6 +125,7 @@ public class GetEditeurActivity extends AppCompatActivity {
         btnMainMenu = (Button) findViewById(R.id.btnMainMenu_Details);
 
         tvNom.setText(editeur.getNom());
+        nomclasse.setText(editeur.getClass().getSimpleName());
         Adresse a = editeur.getAdresse();
         num.setText(a.getNumero());
         rue.setText(a.getRue());
@@ -138,5 +150,27 @@ public class GetEditeurActivity extends AppCompatActivity {
         });
 
         findPublications();
+    }
+
+    public Livre isLivre(Publication p){
+        List<Livre> livreList = Singleton.getInstance(getApplicationContext()).getLivres();
+        for(int i = 0; i < livreList.size(); i++){
+            if(livreList.get(i).getTitre().equals(p.getTitre())) {
+                isLivre = true;
+                return livreList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Magazine isMagazine(Publication p){
+        List<Magazine> magazineList = Singleton.getInstance(getApplicationContext()).getMagazines();
+        for(int i = 0; i < magazineList.size(); i++){
+            if(magazineList.get(i).getTitre().equals(p.getTitre())){
+                isMagazine = true;
+                return magazineList.get(i);
+            }
+        }
+        return null;
     }
 }

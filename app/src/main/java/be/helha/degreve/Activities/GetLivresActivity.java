@@ -16,6 +16,7 @@ import be.helha.degreve.Entities.Livre;
 import be.helha.degreve.R;
 import be.helha.degreve.UI.LivreUiAdapter;
 import be.helha.degreve.async.GetLivres;
+import be.helha.degreve.async.Singleton;
 
 public class GetLivresActivity extends AppCompatActivity {
 
@@ -73,5 +74,11 @@ public class GetLivresActivity extends AppCompatActivity {
 
         async = new GetLivres(btnReturn_GetAll, lvGetAll, getApplicationContext());
         async.execute();
+        updateUi();
+    }
+
+    public void updateUi(){
+        LivreUiAdapter uiAdapter = new LivreUiAdapter(getApplicationContext(), R.layout.livre_list_item, Singleton.getInstance(getApplicationContext()).getLivres());
+        lvGetAll.setAdapter(uiAdapter);
     }
 }
