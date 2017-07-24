@@ -34,7 +34,7 @@ import be.helha.degreve.async.Singleton;
 public class GetLivreActivity extends AppCompatActivity {
 
     private final String baseUrl = "http://54.76.209.52:8080/api-livres/services/api/livres/";
-    private final String imgUrl = "http://54.76.209.52:8080/api-livres/services/files/download/";
+    private final String imgUrl = "http://54.76.209.52:11080/api-livres/services/files/download/";
     private Livre livre;
 
     private TextView tvTitre;
@@ -56,7 +56,7 @@ public class GetLivreActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         tvTitre.setText(livre.getTitre());
-                        loadImage(livre.getId());
+                        loadImage();
                     }
                 },
                 new Response.ErrorListener() {
@@ -69,12 +69,13 @@ public class GetLivreActivity extends AppCompatActivity {
         Singleton.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 
-    public void loadImage(int id){
+    public void loadImage(){
 
         ImageRequest imgR = new ImageRequest(imgUrl + livre.getId(), new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 getlivreImage.setImageBitmap(response);
+                //getlivreImage.setImageUrl(imgUrl+""+livre.getId(), Singleton.getInstance(getApplicationContext()).getImageLoader());
             }
         }, R.dimen.detailWidth, R.dimen.detailHeight, ImageView.ScaleType.CENTER, Bitmap.Config.RGB_565,
                 new Response.ErrorListener() {
@@ -147,6 +148,7 @@ public class GetLivreActivity extends AppCompatActivity {
         btnReturn = (Button) findViewById(R.id.btnReturn_Details);
         getlivreImage = (NetworkImageView) findViewById(R.id.getlivreImage);
 
+        tvTitre.setText(livre.getTitre());
         nomclasse.setText(livre.getClass().getSimpleName());
 
         btnReturn.setOnClickListener(new View.OnClickListener() {
