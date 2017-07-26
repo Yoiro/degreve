@@ -40,11 +40,6 @@ public class AdaptationUiAdapter extends ArrayAdapter<Adaptation>{
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View tuile=inflater.inflate(this.tuile_layout,parent, false);
         NetworkImageView networkImageView = (NetworkImageView) tuile.findViewById(R.id.adaptationitemIMG);
-        try{
-            networkImageView.setImageUrl(imageUrl+current.getId(), Singleton.getInstance(context).getImageLoader());
-        } catch (Exception e){
-            networkImageView.setImageResource(R.mipmap.ic_launcher);
-        }
         TextView tvName=(TextView) tuile.findViewById(R.id.adaptationitemTV);
         tvName.setText(current.getTitre());
         TextView year = (TextView) tuile.findViewById(R.id.adaptationitemAnnee);

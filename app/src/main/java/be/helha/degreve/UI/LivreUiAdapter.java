@@ -27,7 +27,7 @@ public class LivreUiAdapter extends ArrayAdapter<Livre> {
     private Context context;
     private int tuile_layout;
     private List<Livre> list;
-    private final String imageUrl = "http://52.31.3.254:11080/api-livres/services/files/download/";
+    private final String imageUrl = "http://54.76.209.52:8080/api-livres/services/files/download/";
 
     public LivreUiAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Livre> list){
         super(context,resource,list);
@@ -43,6 +43,8 @@ public class LivreUiAdapter extends ArrayAdapter<Livre> {
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View tuile=inflater.inflate(this.tuile_layout,parent, false);
         NetworkImageView networkImageView = (NetworkImageView) tuile.findViewById(R.id.lvGetAll_imgThumbLivre);
+        networkImageView.setMaxHeight(R.dimen.thumbHeight);
+        networkImageView.setMaxWidth(R.dimen.thumbWidth);
         networkImageView.setImageUrl(imageUrl+current.getId(), Singleton.getInstance(context).getImageLoader());
         TextView tvName=(TextView) tuile.findViewById(R.id.lvGetAll_nameLivre);
         tvName.setText(current.getTitre());

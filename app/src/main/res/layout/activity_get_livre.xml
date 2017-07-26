@@ -9,7 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Activities.GetLivreActivity"
     android:orientation="vertical">
-
+<ScrollView
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/livreinfo"
         android:layout_width="wrap_content"
@@ -29,9 +32,10 @@
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/getlivreImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/nomclasse"/>
+            android:layout_width="@dimen/fullWidth"
+            android:layout_height="@dimen/fullHeight"
+            android:layout_below="@id/nomclasse"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/tvTitre_Details"
@@ -83,7 +87,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </ListView>
-
         </LinearLayout>
 
         <LinearLayout
@@ -104,8 +107,10 @@
             </ListView>
         </LinearLayout>
     </RelativeLayout>
+</ScrollView>
 
     <RelativeLayout
+        android:layout_below="@id/scrollview"
         android:id="@+id/linearBtn_Details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -9,4 +9,9 @@
     <dimen name="adressetitre">20sp</dimen>
     <dimen name="adaptationannee">16sp</dimen>
     <dimen name="typeTitle">18sp</dimen>
+    <dimen name="thumbWidth">40dp</dimen>
+    <dimen name="thumbHeight">60dp</dimen>
+    <dimen name="fullHeight">180dp</dimen>
+    <dimen name="fullWidth">120dp</dimen>
+
 </resources>

@@ -34,7 +34,7 @@ import be.helha.degreve.async.Singleton;
 public class GetLivreActivity extends AppCompatActivity {
 
     private final String baseUrl = "http://54.76.209.52:8080/api-livres/services/api/livres/";
-    private final String imgUrl = "http://54.76.209.52:11080/api-livres/services/files/download/";
+    private final String imgUrl = "http://54.76.209.52:8080/api-livres/services/files/download/";
     private Livre livre;
 
     private TextView tvTitre;
@@ -74,8 +74,7 @@ public class GetLivreActivity extends AppCompatActivity {
         ImageRequest imgR = new ImageRequest(imgUrl + livre.getId(), new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
-                getlivreImage.setImageBitmap(response);
-                //getlivreImage.setImageUrl(imgUrl+""+livre.getId(), Singleton.getInstance(getApplicationContext()).getImageLoader());
+                getlivreImage.setImageUrl(imgUrl+""+livre.getId(), Singleton.getInstance(getApplicationContext()).getImageLoader());
             }
         }, R.dimen.detailWidth, R.dimen.detailHeight, ImageView.ScaleType.CENTER, Bitmap.Config.RGB_565,
                 new Response.ErrorListener() {

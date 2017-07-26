@@ -40,8 +40,11 @@ public class PublicationUiAdapter extends ArrayAdapter<Publication> {
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View tuile=inflater.inflate(this.tuile_layout,parent, false);
         NetworkImageView networkImageView = (NetworkImageView) tuile.findViewById(R.id.publicationitemIMG);
+        networkImageView.setMaxHeight(R.dimen.thumbHeight);
+        networkImageView.setMaxWidth(R.dimen.thumbWidth);
         try {
             networkImageView.setImageUrl(imageUrl + current.getId(), Singleton.getInstance(context).getImageLoader());
+
         } finally {
             TextView tvName=(TextView) tuile.findViewById(R.id.publicationitemTV);
             tvName.setText(current.getTitre());

@@ -36,7 +36,6 @@ public class GetAuteurActivity extends AppCompatActivity {
     private TextView nomclasse;
     private ListView lvLivres;
     private Button btnReturn;
-    private Button btnDelete;
     private Button btnMainMenu;
 
     public void findPublications(){

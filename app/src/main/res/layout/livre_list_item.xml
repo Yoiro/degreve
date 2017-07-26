@@ -5,8 +5,8 @@
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/lvGetAll_imgThumbLivre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/thumbWidth"
+        android:layout_height="@dimen/thumbHeight"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="#000000"/>

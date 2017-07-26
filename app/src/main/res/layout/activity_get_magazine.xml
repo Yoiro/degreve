@@ -28,16 +28,15 @@
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/getmagazineImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/nomclasse"/>
+            android:layout_width="@dimen/fullWidth"
+            android:layout_height="@dimen/fullHeight"
+            android:layout_below="@id/nomclasse"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/tvTitre_Details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/getlivreImage"
-            android:layout_toEndOf="@id/getmagazineImage"
             android:layout_below="@id/getmagazineImage"
             android:text="[TITRE]"
             android:textSize="@dimen/detailTitle"/>

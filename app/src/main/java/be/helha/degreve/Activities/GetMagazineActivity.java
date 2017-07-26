@@ -68,7 +68,7 @@ public class GetMagazineActivity extends AppCompatActivity {
                         tvTitre.setText(livre.getTitre());
                         editionsTitle.setText("EDITEURS");
                         periodicite.setText(livre.getPeriodicite());
-                        loadImage(livre.getId());
+                        loadImage();
                     }
                 },
                 new Response.ErrorListener() {
@@ -81,13 +81,13 @@ public class GetMagazineActivity extends AppCompatActivity {
         Singleton.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 
-    public void loadImage(int id){
+    public void loadImage(){
 
         ImageRequest imgR = new ImageRequest(imgUrl + livre.getId(), new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
                 NetworkImageView imageView = (NetworkImageView) findViewById(R.id.getmagazineImage);
-                imageView.setImageBitmap(response);
+                imageView.setImageUrl(imgUrl+livre.getId(), Singleton.getInstance(getApplicationContext()).getImageLoader());
             }
         }, R.dimen.detailWidth, R.dimen.detailHeight, ImageView.ScaleType.CENTER, Bitmap.Config.RGB_565,
                 new Response.ErrorListener() {

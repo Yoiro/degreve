@@ -40,7 +40,10 @@ public class MagazineUiAdapter extends ArrayAdapter<Magazine>{
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View tuile=inflater.inflate(this.tuile_layout,parent, false);
         NetworkImageView networkImageView = (NetworkImageView) tuile.findViewById(R.id.magitemIMG);
+        networkImageView.setMaxHeight(R.dimen.thumbHeight);
+        networkImageView.setMaxWidth(R.dimen.thumbWidth);
         networkImageView.setImageUrl(imageUrl+current.getId(), Singleton.getInstance(context).getImageLoader());
+
         TextView tvName=(TextView) tuile.findViewById(R.id.magitemTV);
         tvName.setText(current.getTitre());
         return tuile;
